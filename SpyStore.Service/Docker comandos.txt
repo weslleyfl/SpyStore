@@ -1,0 +1,68 @@
+To get the latest image for the Linux version of SQL Server 2017, pull it from
+DockerHub with the following command:
+# docker pull mcr.microsoft.com/mssql/server:2017-latest
+
+To create and run a container based on that image, enter the following command (all on one line):
+# docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=P@ssw0rd" -e "MSSQL_PID=Express" -p 5433:1433 --name SpyStore21 -d mcr.microsoft.com/mssql/server:2017-latest
+
+To confirm that the container is up and running, execute the following command:
+# docker ps -all
+
+
+As a final step, execute the following command to display the logs to check the status of the container:
+# Docker logs SpyStore21
+
+# docker start SpyStore21
+
+# docker-compose up
+docker-compose down
+docker-compose ps
+
+
+The connection string used in this book is as follows (the connection string needs to
+be on one line):
+Server=.,5433;Database=SpyStore21; User ID=sa;Password=P@ssw0rd;Multiple ActiveResultSets=true;
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools -v 3.1.0
+
+dotnet ef migrations add Initial -o EfStructures\Migrations -c SpyStore.Dal.EfStructures.StoreContext
+
+To create a SQL script for the Initial migration, enter the following command:
+# dotnet ef migrations script 0 Initial -o migration.sql -c SpyStore.Dal.EfStructures.StoreContext
+
+dotnet ef migrations remove -c SpyStore.Dal.EfStructures.StoreContext
+
+dotnet ef database update Initial -c SpyStore.Dal.EfStructures.StoreContext
+
+dotnet ef database update TSQL -c SpyStore.Dal.EfStructures.StoreContext
+
+
+dotnet ef migrations add Final -c SpyStore.Dal.EfStructures.StoreContext
+dotnet ef database update Final -c SpyStore.Dal.EfStructures.StoreContext
+
+localhost,5433
+sa
+P@ssw0rd
+
+
+Install-Package  AutoMapper
+Install-Package  Newtonsoft.Json
+Install-Package  Swashbuckle.AspNetCore.Annotations
+Install-Package  Swashbuckle.AspNetCore.Swagger
+Install-Package  Swashbuckle.AspNetCore.SwaggerGen
+Install-Package  Swashbuckle.AspNetCore.SwaggerUI
+Install-Package  Microsoft.VisualStudio.Azure.Containers.Tools.Targets -v 1.7.9
+Install-Package  Microsoft.VisualStudio.Web.CodeGeneration.Design -v 2.1.2
+
+"SpyStore": "Server=.,5433;Database=SpyStore21;User ID=sa;Password=P@ssw0rd;MultipleActiveResultSets=true;"
+
+Server=db;Database=SpyStore21;User Id=sa;Password=P@ssw0rd;MultipleActiveResultSets=true
+
+Install-Package AutoMapper
+Install-Package Newtonsoft.Json
+Install-Package LigerShark.WebOptimizer.Core -v 1.0.236
+Install-Package LigerShark.WebOptimizer.Sass -v 1.0.34-beta
+Install-Package Microsoft.Web.LibraryManager.Build
+
+
+Building Web Applications with .NET Core 3.1 and JavaScript
